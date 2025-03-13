@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+
 function App() {
   const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -18,15 +20,19 @@ function App() {
         setWeather(data);
       } catch (error) {
         console.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     getData();
   }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Weather</h1>
-        {weather && (
+        {loading && <p>Loading...</p>}
+        {weather && !loading && (
           <div>
             <h2>{weather.name}</h2>
             <p>Temperature: {weather.main.temp}°C</p>
