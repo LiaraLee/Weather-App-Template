@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 function App() {
-  // const useState to store the weather data from the API
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -16,8 +15,8 @@ function App() {
         }
         
         const data = await res.json();
-        setWeather(data); // stores the data in state, i think this is hwere it updates the data too?
-        // console.log(data);
+        setWeather(data); // stores and updates the data in state
+        // console.log(data); removed beacause setWeather is already logging the data dynamically, use if you need to debug though 
       } catch (error) {
         console.error(error.message);
       }
@@ -25,16 +24,15 @@ function App() {
     getData();
   }, []);
   return (
-    // use className instead of class beacuse react doesnt like class beacuse it is a keyword for javascript and it messes up the code when react translates to javascript, add the div to wrap the whole beacuse react doesnt like multiple elements in the middle of a code
      <div className="App">
-      {/* use brackets to wrap you comments inside of jsx? */}
+      {/* YES! use brackets to wrap you comments inside of jsx beacuse they qualify as an element and react only accepts one element inside of the return */}
       <header className="App-header">
         <h1>Weather</h1>
-        {/* // this checks to make sure all data is ready before it actualy renders it for users to see */}
-       {weather && ( 
+        {/* logical and operator basically if truthy render <p> if not null, for statements are not used in react so we write it like this*/}
+       {weather && (
           <div>
           <h2>{weather.name}</h2> {/*weather+city name*/}
-          <p>Temperature: {weather.main.temp}°C</p> {/*temperature displayed in celsius, maybe try to make it display both with a button?*/}
+          <p>Temperature: {weather.main.temp}°C</p> {/*temperature displayed in celsius, definitely make a button but not ready for that just yet */}
           </div>
        )}
       </header>
