@@ -10,7 +10,7 @@ function App() {
   const getData = async () => {
     setLoading(true);
     setError(null);
-    const APIKEY = import.meta.env.VITE_API_KEY;
+    const APIKEY = import.meta.env.VITE_API_KEY; // Importing environment variable, basically importing my api key from .env file I made
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`;
 
     try {
