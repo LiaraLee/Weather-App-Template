@@ -5,11 +5,11 @@ function App() {
   const [city, setCity] = useState("New York");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // stores the error message
+  const [error, setError] = useState(null);
 
   const getData = async () => {
     setLoading(true);
-    setError(null); //resets the errror message before the new request
+    setError(null);
     const APIKEY = import.meta.env.VITE_API_KEY;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`;
 
@@ -21,7 +21,7 @@ function App() {
       const data = await res.json();
       setWeather(data);
     } catch (error) {
-      setError(error.message); // store error message instead of console.log, this updates the state when an error happens
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -42,7 +42,6 @@ function App() {
         />
         <button onClick={getData}>Get Weather</button>
         {loading && <p>Loading...</p>}
-        {/* display the error message*/}
         {error && <p>{error}</p>}
         {weather && !loading && !error && (
           <div>
