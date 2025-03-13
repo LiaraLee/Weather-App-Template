@@ -28,7 +28,7 @@ function App() {
       {/* YES! use brackets to wrap you comments inside of jsx beacuse they qualify as an element and react only accepts one element inside of the return */}
       <header className="App-header">
         <h1>Weather</h1>
-        {/* logical and operator basically if truthy render <p> if not null, for statements are not used in react so we write it like this*/}
+        {/* logical and operator basically if truthy render <p> if not null,nope! for looks like .map() */}
        {weather && (
           <div>
           <h2>{weather.name}</h2> {/*weather+city name*/}
