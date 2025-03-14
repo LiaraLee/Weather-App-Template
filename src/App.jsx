@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Search from "./Search"; //importing the search component from serach.js so it can be used as a prop here
 import { WeatherDisplay } from "./WeatherDisplay";
 import "./App.css";
 
@@ -31,17 +32,14 @@ function App() {
     getData();
   }, [city]);
 
+  //function/try block above is only for the App.jsx!!
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Weather</h1>
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Enter city name"
-        />
-        <button onClick={getData}>Get Weather</button>
+{/*calling the search component and passing in the setCity and getData functions as props*/}
+      <Search setCity={setCity} getData={getData} />
         <WeatherDisplay loading={loading} error={error} weather={weather} />
       </header>
     </div>
