@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Search from "./Search";
 import { WeatherDisplay } from "./WeatherDisplay";
 import "./App.css";
 
@@ -35,13 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Weather</h1>
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Enter city name"
-        />
-        <button onClick={getData}>Get Weather</button>
+        <Search setCity={setCity} getData={getData} />
         <WeatherDisplay loading={loading} error={error} weather={weather} />
       </header>
     </div>

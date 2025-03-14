@@ -1,1 +1,15 @@
-//input field and button for searching, will accept city and setCity as props since they belong to the App.js state
+function Search({ setCity, getData }) {
+  return (
+    <div>
+      <input
+        type="text"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="Enter city name"
+      />
+      <button onClick={getData}>Get Weather</button>
+    </div>
+  );
+}
+
+export default Search;
