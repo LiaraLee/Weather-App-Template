@@ -1,0 +1,1 @@
+//input field and button for searching, will accept city and setCity as props since they belong to the App.js state

@@ -1,0 +1,1 @@
+//display errors here to keep APp.js clean and it will be used to pass props from app.js

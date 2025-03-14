@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { WeatherDisplay } from "./WeatherDisplay";
 import "./App.css";
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
   const getData = async () => {
     setLoading(true);
     setError(null);
-    const APIKEY = import.meta.env.VITE_API_KEY; // Importing environment variable, basically importing my api key from .env file I made
+    const APIKEY = import.meta.env.VITE_API_KEY;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`;
 
     try {
@@ -41,14 +42,7 @@ function App() {
           placeholder="Enter city name"
         />
         <button onClick={getData}>Get Weather</button>
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        {weather && !loading && !error && (
-          <div>
-            <h2>{weather.name}</h2>
-            <p>Temperature: {weather.main.temp}°C</p>
-          </div>
-        )}
+        <WeatherDisplay loading={loading} error={error} weather={weather} />
       </header>
     </div>
   );
