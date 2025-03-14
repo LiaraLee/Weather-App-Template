@@ -1,15 +1,26 @@
-export function Search({ city, setCity, getData }) {
+import { useState } from "react";
+export function Search({ setCity }) {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    setCity(input);
+    setInput("");
+  };
   return (
-    <div>
+    <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter city name"
+        placeholder="Enter city, zip, or address"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        className="search-input"
       />
-      <button onClick={getData}>Get Weather</button>
-    </div>
+      <button type="submit" className="search-button">
+        Search
+      </button>
+    </form>
   );
 }
-
 export default Search;
