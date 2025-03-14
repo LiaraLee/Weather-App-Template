@@ -1,4 +1,4 @@
-function Search({ setCity, getData }) {
+export function Search({ city, setCity, getData }) {
   return (
     <div>
       <input
