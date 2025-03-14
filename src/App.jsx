@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Search from "./Search";
+import {Search} from "./Search";
 import { WeatherDisplay } from "./WeatherDisplay";
 import "./App.css";
 
@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Weather</h1>
-        <Search setCity={setCity} getData={getData} />
+        <Search city={city} setCity={setCity} getData={getData} />
         <WeatherDisplay loading={loading} error={error} weather={weather} />
       </header>
     </div>
