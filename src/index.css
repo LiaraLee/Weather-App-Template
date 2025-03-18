@@ -1,13 +1,65 @@
+@font-face {
+  font-family: 'Bubblegum';
+  src: url('Assets/Bubblegum.ttf') format('truetype');
+  font-weight: 200;
+  font-style: light;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Bubblegum', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-shadow: navy 2px 2px 2px;
+  text-align: center;
+
+}
+code {
+  font-family:'Bubllegum'; 
+  src: url('Assets/CloudAhead.ttf') format('truetype');
+}
+h1 {
+  font-family:'Bubblegum';
+  font-size: 100px;
+  text-align: center;
+  margin: 20px 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  background-color: green;
+  padding: 20px;
+  border-radius: 40px;
+  box-shadow: 0px 4px 10px darkgreen;
+  color:white
+}
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 40px;
+}
+
+button {
+  background-color: rgb(255, 192, 227);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+button:hover {
+  background-color: rgb(225, 184, 249);
+  color: white;
 }
