@@ -11,6 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-shadow: navy 2px 2px 2px;
   text-align: center;
+  letter-spacing: 10px;
 
 }
 code {
@@ -22,6 +23,7 @@ h1 {
   font-size: 100px;
   text-align: center;
   margin: 20px 0;
+  letter-spacing: 20px;
 }
 form {
   display: flex;
@@ -44,10 +46,27 @@ form {
   align-items: stretch;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
 input {
   font-size: 16px;
   padding: 8px;
   border-radius: 40px;
+}
+
+label {
+ color:rgb(225, 184, 249)
 }
 
 button {
