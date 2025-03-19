@@ -4,27 +4,40 @@
   font-weight: 200;
   font-style: light;
 }
+
 body {
   margin: 0;
   font-family: 'Bubblegum', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: navy 2px 2px 2px;
+  text-shadow: navy 3px 3px 3px;
   text-align: center;
-  letter-spacing: 10px;
-
 }
+
 code {
   font-family:'Bubllegum'; 
   src: url('Assets/CloudAhead.ttf') format('truetype');
 }
+
 h1 {
   font-family:'Bubblegum';
   font-size: 100px;
   text-align: center;
   margin: 20px 0;
   letter-spacing: 20px;
+  color: rgba(255, 192, 227, 0.872);
+  letter-spacing: 10px;
 }
+
+h2 {
+  font-family:'Bubblegum';
+  font-size: 50px;
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 10px;
+  color: rgba(255, 192, 227, 0.872);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -39,6 +52,7 @@ form {
   box-shadow: 0px 4px 10px darkgreen;
   color:white
 }
+
 .form-group {
   width: 100%;
   display: flex;
@@ -82,19 +96,27 @@ button:hover {
   background-color: rgb(225, 184, 249);
   color: white;
 }
+
 .forecast-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  align-items: flex-start;
   margin-top: 20px;
   background-color: green;
   border-radius: 40px;
+  box-shadow: 0px 4px 10px darkgreen;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
 }
 
 .forecast-day {
   text-align: center;
   margin: 10px;
   width: 150px;
+  padding: 10px;
+letter-spacing: 5px;
 }
 
 .forecast-day img {
@@ -105,8 +127,12 @@ button:hover {
 .forecast-day h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
 }
 
 .forecast-day p {
   font-size: 1rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
 }
