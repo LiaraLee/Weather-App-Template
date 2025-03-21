@@ -4,7 +4,7 @@ export function ForecastDisplay({ forecast }) {
   return (
     <div className="forecast-container">
       <h2>5-Day Forecast</h2>
-      <div className="forecast-grid">
+      <div className="forecast-day">
         {forecast.map(({ date, tempMin, tempMax, weather }) => (
           <div key={date} className="forecast-card">
             <h3>

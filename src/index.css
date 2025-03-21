@@ -12,29 +12,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-shadow: navy 3px 3px 3px;
   text-align: center;
+  font-size: 16px; /* Set a base font size for the body, this helps with responsivenes on different devices */
 }
 
 code {
-  font-family:'Bubllegum'; 
+  font-family: 'Bubblegum'; 
   src: url('Assets/CloudAhead.ttf') format('truetype');
 }
 
 h1 {
-  font-family:'Bubblegum';
-  font-size: 100px;
+  font-family: 'Bubblegum';
+  font-size: 6rem; /* Using rems for scalable font size, first time really trying rem */
   text-align: center;
   margin: 20px 0;
-  letter-spacing: 20px;
-  color: rgba(255, 192, 227, 0.872);
   letter-spacing: 10px;
+  color: rgba(255, 192, 227, 0.872);
 }
 
 h2 {
-  font-family:'Bubblegum';
-  font-size: 50px;
+  font-family: 'Bubblegum';
+  font-size: 3rem;
   text-align: center;
   margin: 20px 0;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
   color: rgba(255, 192, 227, 0.872);
 }
 
@@ -50,7 +50,7 @@ form {
   padding: 20px;
   border-radius: 40px;
   box-shadow: 0px 4px 10px darkgreen;
-  color:white
+  color: white;
 }
 
 .form-group {
@@ -74,13 +74,13 @@ li {
 }
 
 input {
-  font-size: 16px;
+  font-size: 1rem; /* Rem instead of px for scalability, first time really trying rem*/
   padding: 8px;
   border-radius: 40px;
 }
 
 label {
- color:rgb(225, 184, 249)
+  color: rgb(225, 184, 249);
 }
 
 button {
@@ -114,9 +114,9 @@ button:hover {
 .forecast-day {
   text-align: center;
   margin: 10px;
-  width: 150px;
+  width: 300px;
   padding: 10px;
-letter-spacing: 5px;
+  letter-spacing: 5px;
 }
 
 .forecast-day img {
@@ -135,4 +135,65 @@ letter-spacing: 5px;
   font-size: 1rem;
   border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
+}
+/*this is the first time Im making media quieries i might use as a base for other projects instead of just eyalling it*/
+
+/*detail how each element should look on different screen sizes: 768px*/
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 4rem; /* Adjust font size for tablets */
+  }
+
+  h2 {
+    font-size: 2rem; /* Adjust font size for tablets */
+  }
+
+  form {
+    width: 95%; /* Take up more width on smaller screens */
+  }
+
+  .forecast-container {
+    flex-direction: column; /* Stack forecast cards on small screens */
+    align-items: center;
+    width: 100%;
+  }
+
+  .forecast-day {
+    width: 100%; /* Make forecast days take full width on small screens */
+  }
+
+  .forecast-day img {
+    width: 40px; /* Smaller image size for smaller screens */
+    height: 40px;
+  }
+}
+/*detail how each element should look on different screen sizes: 480px*/
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 3rem; /* Further reduce font size for small devices */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Further reduce font size for small devices */
+  }
+
+  form {
+    width: 100%; /* Form should take up full width on mobile */
+  }
+
+  .forecast-container {
+    padding: 10px; /* Less padding for smaller devices */
+  }
+
+  .forecast-day {
+    width: 100%;
+    padding: 5px; /* Less padding for smaller devices */
+  }
+
+  .forecast-day img {
+    width: 30px; /* Smaller images for smaller devices */
+    height: 30px;
+  }
 }
