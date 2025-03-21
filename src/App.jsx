@@ -29,7 +29,8 @@ function App() {
         if (!geoRes.ok) throw new Error(`Geocoding error: ${geoRes.status}`);
 
         const geoData = await geoRes.json();
-        if (!geoData.length) throw new Error("Location not found. Try another search.");
+        if (!geoData.length)
+          throw new Error("Location not found. Try another search.");
 
         const { lat, lon } = geoData[0];
         weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric`;
@@ -37,26 +38,34 @@ function App() {
       }
 
       const weatherRes = await fetch(weatherUrl);
-      if (!weatherRes.ok) throw new Error(`Weather fetch error: ${weatherRes.status}`);
+      if (!weatherRes.ok)
+        throw new Error(`Weather fetch error: ${weatherRes.status}`);
       const weatherData = await weatherRes.json();
       setWeather(weatherData);
 
       const forecastRes = await fetch(forecastUrl);
-      if (!forecastRes.ok) throw new Error(`Forecast fetch error: ${forecastRes.status}`);
+      if (!forecastRes.ok)
+        throw new Error(`Forecast fetch error: ${forecastRes.status}`);
       const forecastData = await forecastRes.json();
 
-      const dailyForecast = forecastData.list.reduce((acc, entry) => { 
+      const dailyForecast = forecastData.list.reduce((acc, entry) => {
         const date = entry.dt_txt.split(" ")[0];
         if (!acc[date]) {
-          acc[date] = { tempMin: entry.main.temp, tempMax: entry.main.temp, weather: entry.weather[0] };
+          acc[date] = {
+            tempMin: entry.main.temp,
+            tempMax: entry.main.temp,
+            weather: entry.weather[0],
+          };
         } else {
           acc[date].tempMin = Math.min(acc[date].tempMin, entry.main.temp);
-          acc[date].tempMax = Math.max(acc[date].tempMax, entry.main.temp); 
+          acc[date].tempMax = Math.max(acc[date].tempMax, entry.main.temp);
         }
         return acc;
       }, {});
 
-      setForecast(Object.entries(dailyForecast).map(([date, data]) => ({ date, ...data })));
+      setForecast(
+        Object.entries(dailyForecast).map(([date, data]) => ({ date, ...data }))
+      );
     } catch (error) {
       setError(error.message);
     } finally {
