@@ -7,6 +7,10 @@ export function ForecastDisplay({ forecast }) {
       <div className="forecast-day">
         {forecast.map(({ date, tempMin, tempMax, weather }) => (
           <div key={date} className="forecast-card">
+                <img
+              src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+              alt={weather.description}
+            />
             <h3>
               {new Date(date).toLocaleDateString("en-US", { weekday: "long" })}
             </h3>
@@ -14,10 +18,6 @@ export function ForecastDisplay({ forecast }) {
             <p>High: {Math.round(tempMax)}°C</p>
             <p>Low: {Math.round(tempMin)}°C</p>
             <p>{weather.description}</p>
-            <img
-              src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-              alt={weather.description}
-            />
           </div>
         ))}
       </div>
