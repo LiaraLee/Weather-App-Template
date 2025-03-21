@@ -12,29 +12,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-shadow: navy 3px 3px 3px;
   text-align: center;
+  font-size: 16px;
 }
 
 code {
-  font-family:'Bubllegum'; 
+  font-family: 'Bubblegum'; 
   src: url('Assets/CloudAhead.ttf') format('truetype');
 }
 
 h1 {
-  font-family:'Bubblegum';
-  font-size: 100px;
+  font-family: 'Bubblegum';
+  font-size: 6rem;
   text-align: center;
   margin: 20px 0;
-  letter-spacing: 20px;
-  color: rgba(255, 192, 227, 0.872);
   letter-spacing: 10px;
+  color: rgba(255, 192, 227, 0.872);
 }
 
 h2 {
-  font-family:'Bubblegum';
-  font-size: 50px;
+  font-family: 'Bubblegum';
+  font-size: 3rem;
   text-align: center;
   margin: 20px 0;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
   color: rgba(255, 192, 227, 0.872);
 }
 
@@ -50,7 +50,7 @@ form {
   padding: 20px;
   border-radius: 40px;
   box-shadow: 0px 4px 10px darkgreen;
-  color:white
+  color: white;
 }
 
 .form-group {
@@ -74,13 +74,13 @@ li {
 }
 
 input {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 8px;
   border-radius: 40px;
 }
 
 label {
- color:rgb(225, 184, 249)
+  color: rgb(225, 184, 249);
 }
 
 button {
@@ -114,9 +114,9 @@ button:hover {
 .forecast-day {
   text-align: center;
   margin: 10px;
-  width: 150px;
+  width: 300px;
   padding: 10px;
-letter-spacing: 5px;
+  letter-spacing: 5px;
 }
 
 .forecast-day img {
@@ -135,4 +135,63 @@ letter-spacing: 5px;
   font-size: 1rem;
   border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  form {
+    width: 95%;
+  }
+
+  .forecast-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .forecast-day {
+    width: 100%;
+  }
+
+  .forecast-day img {
+    width: 40px; 
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .forecast-container {
+    padding: 10px;
+  }
+
+  .forecast-day {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .forecast-day img {
+    width: 30px;
+    height: 30px;
+  }
 }

@@ -22,20 +22,19 @@ function App() {
 
       if (/^\d+$/.test(city)) {
         weatherUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${city},US&appid=${APIKEY}&units=metric`;
-        forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?zip=${city},US&appid=${APIKEY}&units=metric&cnt=5`;
+        forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?zip=${city},US&appid=${APIKEY}&units=metric`;
       } else {
         const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKEY}`;
         const geoRes = await fetch(geoUrl);
         if (!geoRes.ok) throw new Error(`Geocoding error: ${geoRes.status}`);
 
         const geoData = await geoRes.json();
-
         if (!geoData.length)
           throw new Error("Location not found. Try another search.");
 
         const { lat, lon } = geoData[0];
         weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric`;
-        forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric&cnt=5`;
+        forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric`;
       }
 
       const weatherRes = await fetch(weatherUrl);
@@ -48,7 +47,25 @@ function App() {
       if (!forecastRes.ok)
         throw new Error(`Forecast fetch error: ${forecastRes.status}`);
       const forecastData = await forecastRes.json();
-      setForecast(forecastData.list);
+
+      const dailyForecast = forecastData.list.reduce((acc, entry) => {
+        const date = entry.dt_txt.split(" ")[0];
+        if (!acc[date]) {
+          acc[date] = {
+            tempMin: entry.main.temp,
+            tempMax: entry.main.temp,
+            weather: entry.weather[0],
+          };
+        } else {
+          acc[date].tempMin = Math.min(acc[date].tempMin, entry.main.temp);
+          acc[date].tempMax = Math.max(acc[date].tempMax, entry.main.temp);
+        }
+        return acc;
+      }, {});
+
+      setForecast(
+        Object.entries(dailyForecast).map(([date, data]) => ({ date, ...data }))
+      );
     } catch (error) {
       setError(error.message);
     } finally {
@@ -68,6 +85,10 @@ function App() {
         <WeatherDisplay loading={loading} error={error} weather={weather} />
         {forecast && !loading && <ForecastDisplay forecast={forecast} />}
       </header>
+      <footer>
+              <p>Thank you to Open Weather Map for providing the data</p>
+              <p>Copyright © 2023 Liara Lee</p>
+            </footer>
     </div>
   );
 }

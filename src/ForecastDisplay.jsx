@@ -1,41 +1,25 @@
 import React from "react";
 
 export function ForecastDisplay({ forecast }) {
-  if (!forecast || forecast.length === 0) {
-    return <p>No forecast available.</p>;
-  }
-
-  const getHighLow = (dayData) => {
-    const temps = dayData.map((d) => d.main.temp);
-    const high = Math.max(...temps);
-    const low = Math.min(...temps);
-    return { high, low };
-  };
-
   return (
-    <div>
+    <div className="forecast-container">
       <h2>5-Day Forecast</h2>
-      <div className="forecast-container">
-        {forecast.map((forecastItem, index) => {
-          const date = new Date(forecastItem.dt * 1000);
-          const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
-          const temperature = forecastItem.main.temp;
-          const weatherDescription = forecastItem.weather[0].description;
-          const iconUrl = `http://openweathermap.org/img/wn/${forecastItem.weather[0].icon}.png`;
-          const { high, low } = getHighLow([forecastItem]);
-
-          return (
-            <div key={index} className="forecast-day">
-              <h3>{dayOfWeek}</h3>
-              <img src={iconUrl} alt={weatherDescription} />
-              <p>{weatherDescription}</p>
-              <p>{Math.round(temperature)}°C</p>
-              <p>
-                High: {Math.round(high)}°C | Low: {Math.round(low)}°C
-              </p>
-            </div>
-          );
-        })}
+      <div className="forecast-day">
+        {forecast.map(({ date, tempMin, tempMax, weather }) => (
+          <div key={date} className="forecast-card">
+                <img
+              src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+              alt={weather.description}
+            />
+            <h3>
+              {new Date(date).toLocaleDateString("en-US", { weekday: "long" })}
+            </h3>
+            <p>{new Date(date).toLocaleDateString()}</p>
+            <p>High: {Math.round(tempMax)}°C</p>
+            <p>Low: {Math.round(tempMin)}°C</p>
+            <p>{weather.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
