@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-shadow: navy 3px 3px 3px;
   text-align: center;
-  font-size: 16px; /* Set a base font size for the body, this helps with responsivenes on different devices */
+  font-size: 16px;
 }
 
 code {
@@ -22,7 +22,7 @@ code {
 
 h1 {
   font-family: 'Bubblegum';
-  font-size: 6rem; /* Using rems for scalable font size, first time really trying rem */
+  font-size: 6rem;
   text-align: center;
   margin: 20px 0;
   letter-spacing: 10px;
@@ -74,7 +74,7 @@ li {
 }
 
 input {
-  font-size: 1rem; /* Rem instead of px for scalability, first time really trying rem*/
+  font-size: 1rem;
   padding: 8px;
   border-radius: 40px;
 }
@@ -136,64 +136,62 @@ button:hover {
   border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
 }
-/*this is the first time Im making media quieries i might use as a base for other projects instead of just eyalling it*/
 
-/*detail how each element should look on different screen sizes: 768px*/
-
-/* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
+
   h1 {
-    font-size: 4rem; /* Adjust font size for tablets */
+    font-size: 4rem;
   }
 
   h2 {
-    font-size: 2rem; /* Adjust font size for tablets */
+    font-size: 2rem;
   }
 
   form {
-    width: 95%; /* Take up more width on smaller screens */
+    width: 95%;
   }
 
   .forecast-container {
-    flex-direction: column; /* Stack forecast cards on small screens */
+    flex-direction: column;
     align-items: center;
     width: 100%;
   }
 
   .forecast-day {
-    width: 100%; /* Make forecast days take full width on small screens */
+    width: 100%;
   }
 
   .forecast-day img {
-    width: 40px; /* Smaller image size for smaller screens */
+    width: 40px; 
     height: 40px;
   }
 }
-/*detail how each element should look on different screen sizes: 480px*/
+
 @media screen and (max-width: 480px) {
+
   h1 {
-    font-size: 3rem; /* Further reduce font size for small devices */
+    font-size: 3rem;
   }
 
   h2 {
-    font-size: 1.5rem; /* Further reduce font size for small devices */
+    font-size: 1.5rem;
   }
 
   form {
-    width: 100%; /* Form should take up full width on mobile */
+    width: 100%;
   }
 
   .forecast-container {
-    padding: 10px; /* Less padding for smaller devices */
+    padding: 10px;
   }
 
   .forecast-day {
     width: 100%;
-    padding: 5px; /* Less padding for smaller devices */
+    padding: 5px;
   }
-
+  
   .forecast-day img {
-    width: 30px; /* Smaller images for smaller devices */
+    width: 30px;
     height: 30px;
   }
 }
