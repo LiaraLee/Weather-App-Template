@@ -85,6 +85,10 @@ function App() {
         <WeatherDisplay loading={loading} error={error} weather={weather} />
         {forecast && !loading && <ForecastDisplay forecast={forecast} />}
       </header>
+      <footer>
+              <p>Thank you to Open Weather Map for providing the data</p>
+              <p>Copyright © 2023 Liara Lee</p>
+            </footer>
     </div>
   );
 }
